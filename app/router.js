@@ -6,5 +6,6 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
-  router.post('/geely-data-view/dataSource/upload',controller.upload.upload);
+  router.post('/geely-dataview/dataSource/upload',controller.upload.upload);
+  router.post('/geely-dataview/borad/charts',controller.charts.getCharts);
 };

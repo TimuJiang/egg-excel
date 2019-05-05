@@ -11,6 +11,7 @@
     "egg-multipart": "^2.4.0",
     "egg-scripts": "^2.11.0",
     "exceljs": "^1.7.0",
+    "mockjs": "^1.0.1-beta3",
     "xlsx": "^0.14.1"
   },
   "devDependencies": {
