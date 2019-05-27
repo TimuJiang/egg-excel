@@ -15,7 +15,13 @@ module.exports = appInfo => {
 		csrf: {
 			enable: false,
 		},
-	}
+	},
+	config.mongoose = {
+		client: {
+			url: 'mongodb://127.0.0.1/study',
+			options: {},
+		},
+	},
 	config.multipart = {
 		mode: 'file',
 		fileSize: '50mb',

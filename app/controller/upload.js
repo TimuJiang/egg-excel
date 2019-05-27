@@ -23,6 +23,7 @@ class UploadController extends Controller {
 		const name = 'egg-multipart-test/' + path.basename(file.filename);
 		let workbook = XLSX.readFile(file.filepath)
 		let data = await formatExcel(workbook)
+		console.log(ctx.model)
 		ctx.body = {
 			code: 'success',
 			data:{

@@ -8,10 +8,10 @@ class ChartsController extends Controller {
 		ctx.body = {
 			code: 'success',
 			... Mock.mock({
-				'data|10': [{
+				'data|50': [{
 					'id|+1': 1,
 					'name': '@cname',
-					'value|200-1000': 1
+					'value|100-3000': 1
 				}]
 			}),
 			message: 'message'
