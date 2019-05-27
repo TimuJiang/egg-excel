@@ -11,9 +11,11 @@
     "egg-mongoose": "^3.2.0",
     "egg-multipart": "^2.4.0",
     "egg-scripts": "^2.11.0",
+    "egg-view-pug": "^1.0.0",
     "exceljs": "^1.7.0",
     "mockjs": "^1.0.1-beta3",
     "mongodb": "^3.2.6",
+    "pug": "^2.0.3",
     "xlsx": "^0.14.1"
   },
   "devDependencies": {

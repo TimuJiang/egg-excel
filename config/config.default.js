@@ -30,6 +30,10 @@ module.exports = appInfo => {
 			'.xlsx'
 		]
 	}
+	config.view = {
+		defaultViewEngine: 'pug',
+		mapping: {'.pug': 'pug'}
+	}
 	const userConfig = {
 		// myAppName: 'egg',
 	};

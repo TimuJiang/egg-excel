@@ -13,4 +13,8 @@ module.exports = {
         enable: true,
         package: 'egg-mongoose',
     },
+    pug: {
+        enable: true,
+        package: 'egg-view-pug'
+    }
 };

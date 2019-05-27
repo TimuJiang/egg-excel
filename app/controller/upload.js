@@ -19,16 +19,25 @@ async function formatExcel(workbook) {
 class UploadController extends Controller {
 	async upload() {
 		const { ctx } = this;
-		const file = ctx.request.files[0];
-		const name = 'egg-multipart-test/' + path.basename(file.filename);
-		let workbook = XLSX.readFile(file.filepath)
-		let data = await formatExcel(workbook)
-		console.log(ctx.model)
+		const parts = ctx.multipart({ autoFields: true });
+		debugger
+		const files = [];
+		let stream = await parts()
+		while (stream != null) {
+			const filename = stream.filename.toLowerCase();
+			const target = path.join(this.config.baseDir, 'app/public', filename);
+			files.push(filename);
+		}
+
+		// const file = ctx.request.files[0];
+		// const name = 'egg-multipart-test/' + path.basename(file.filename);
+		// let workbook = XLSX.readFile(file.filepath)
+		// let data = await formatExcel(workbook)
+		// console.log(ctx.model)
 		ctx.body = {
 			code: 'success',
 			data:{
-				url: name,
-				...data
+				url: files,
 			},
 			message: 'message'
 		};
