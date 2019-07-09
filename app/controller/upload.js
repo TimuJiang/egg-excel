@@ -1,6 +1,7 @@
 const path = require('path');
 const Controller = require('egg').Controller;
-
+const toArray = require('stream-to-array');
+const sendToWormhole = require('stream-wormhole');
 const XLSX = require('xlsx');
 
 async function formatExcel(workbook) {
@@ -18,26 +19,24 @@ async function formatExcel(workbook) {
 
 class UploadController extends Controller {
 	async upload() {
-		const { ctx } = this;
-		const parts = ctx.multipart({ autoFields: true });
-		debugger
-		const files = [];
-		let stream = await parts()
-		while (stream != null) {
-			const filename = stream.filename.toLowerCase();
-			const target = path.join(this.config.baseDir, 'app/public', filename);
-			files.push(filename);
+		const stream = await this.ctx.getFileStream()
+		let buf
+		let workbook
+		try {
+			const parts = await toArray(stream)
+			buf = Buffer.concat(parts)
+		} catch (err) {
+			await sendToWormhole(stream)
+			throw err
 		}
-
-		// const file = ctx.request.files[0];
-		// const name = 'egg-multipart-test/' + path.basename(file.filename);
-		// let workbook = XLSX.readFile(file.filepath)
-		// let data = await formatExcel(workbook)
-		// console.log(ctx.model)
-		ctx.body = {
+		if(buf) {
+			workbook = XLSX.read(buf, {type:'buffer'});
+			console.log(workbook)
+		}
+		this.ctx.body = {
 			code: 'success',
 			data:{
-				url: files,
+				url: formatExcel(workbook) || {},
 			},
 			message: 'message'
 		};

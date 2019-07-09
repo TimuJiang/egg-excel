@@ -16,14 +16,14 @@ module.exports = appInfo => {
 			enable: false,
 		},
 	},
-	config.mongoose = {
-		client: {
-			url: 'mongodb://127.0.0.1/study',
-			options: {},
-		},
-	},
+	// config.mongoose = {
+	// 	client: {
+	// 		url: 'mongodb://127.0.0.1/study',
+	// 		options: {},
+	// 	},
+	// },
 	config.multipart = {
-		mode: 'file',
+		mode: 'stream',
 		fileSize: '50mb',
 		fileExtensions: [
 			'.xls',
