@@ -16,12 +16,12 @@ module.exports = appInfo => {
 			enable: false,
 		},
 	},
-	// config.mongoose = {
-	// 	client: {
-	// 		url: 'mongodb://127.0.0.1/study',
-	// 		options: {},
-	// 	},
-	// },
+	config.mongoose = {
+		client: {
+			url: 'mongodb://127.0.0.1/study',
+			options: {},
+		},
+	},
 	config.multipart = {
 		mode: 'stream',
 		fileSize: '50mb',
