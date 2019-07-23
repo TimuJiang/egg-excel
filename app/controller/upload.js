@@ -64,7 +64,6 @@ class UploadController extends Controller {
 				row: row
 			}
 		})
-
 		let sheet = workbook.Sheets[workbook.SheetNames[0]]
 		// 获取数据范围
 		let range = XLSX.utils.decode_range(sheet['!ref'])
